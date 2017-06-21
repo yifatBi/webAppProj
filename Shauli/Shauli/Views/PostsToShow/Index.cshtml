@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Shauli.Models.Posts>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@foreach (var post in Model)
+{
+    //set the paragrapshs to substrings
+    var textLength1 = post.PostContent.IndexOf('.', post.PostContent.Length / 4) + 1;
+    var textLength2 = post.PostContent.IndexOf('.', post.PostContent.Length * 3 / 4) + 1 - textLength1;
+    var subtxt1 = post.PostContent.Substring(0, textLength1);
+    var subtxt2 = post.PostContent.Substring(textLength1 + 1, textLength2);
+    var subtxt3 = post.PostContent.Substring(textLength2 + 1);
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Html.DisplayFor(modelItem => post.Title)</h2>
+                <p>
+
+                    by <a href="@post.AuthorURL">@Html.DisplayFor(modelItem => post.AuthorName)</a>
+                    - <a href="#comments">@post.Comments.Count comments</a>
+                </p>
+            </header>
+            <div>
+                <p>@subtxt1</p>
+                @if (!string.IsNullOrWhiteSpace(post.ImagePath))
+                {
+                    <img src="@post.ImagePath" />
+                }
+                <p>@subtxt2</p>
+                @if (!string.IsNullOrWhiteSpace(post.VideoPath))
+                {
+                    <video controls>
+                        <source src="@post.VideoPath" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                }
+                <p>@subtxt3</p>
+            </div>
+        </article>
+    </section>
+
+    <section id="comments">
+        <h3>Comments</h3>
+        @foreach (var comment in post.Comments)
+        {
+            <article>
+                <header>
+                    <h4>@comment.Title</h4>
+                    <p>
+                        <a href="@comment.AuthorURL">@comment.AuthorName</a>
+                    </p>
+                </header>
+                <p>@comment.CommentContent</p>
+            </article>
+        }
+    </section>
+
+    using (Html.BeginForm("CreateComment", "PostsToShow", FormMethod.Post))
+    {
+        var comment = new Shauli.Models.Comment();
+        comment.PostID = post.ID;
+
+        @Html.AntiForgeryToken();
+        @Html.HiddenFor(modelItem => comment.PostID);
+
+
+        <div class="form-horizontal">
+            <h3>Comment</h3>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(modelItem => comment.AuthorName, "Name")
+                <div class="col-md-111">
+                    @Html.EditorFor(modelItem => comment.AuthorName)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(modelItem => comment.AuthorURL, "Url")
+                <div class="col-md-111">
+                    @Html.EditorFor(modelItem => comment.AuthorURL)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(modelItem => comment.Title)
+                <div class="col-md-111">
+                    @Html.EditorFor(modelItem => comment.Title)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(modelItem => comment.CommentContent)
+                <div class="col-md-111">
+                    @Html.EditorFor(modelItem => comment.CommentContent)
+                </div>
+            </div>
+
+        <p><input type="submit" value="Post comment" /></p>
+
+        </div>
+    }
+
+}
+            }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
