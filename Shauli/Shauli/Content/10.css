@@ -1,6 +1,4 @@
-/*------------------------------
-=305229742 IDO COHEN
-------------------------------*/
+
 
 /*------------------------------
 =BASIC SETUP
@@ -11,9 +9,9 @@
 	margin: 0;
 	padding: 0;
 }
-.shauli @font-face {
-   font-family: myFirstFont;
-   src: url(sansation_light.woff);
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
 }
 
 /* Tell the browser to render HTML 5 elements as block */
@@ -21,8 +19,9 @@
 	display: block;
 }
 /* h1 shadow text */
- h1{
-	text-shadow: 3px 3px #DDDDDD;
+#site-headline {
+    text-shadow: 3px 3px #DDDDDD;
+    font-size:34px;
 }
 
  body.shaliBody {
@@ -34,15 +33,20 @@
 }
 
 .shauli h1, h2 {
-	font-size: 28px;
-	line-height: 44px;
-	padding: 22px 0;
+   font-family: "Acme";
+   font-size: 22px;
+    line-height: 44px;
+    padding: 22px 0;
 }
 
 .shauli h3 {
 	font-size: 18px;
 	line-height: 22px;
 	padding: 11px 0;
+}
+aside h3 {
+     font-family: myFirstFont;
+
 }
 
 .shauli p {
@@ -56,17 +60,17 @@
 ------------------------------*/
 
 .shauli nav {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	/*background: url("images/nav_background.png");*/
-	
+    position: absolute;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    top: 110px;
+    /*background: url("images/nav_background.png");*/
     background: #003300; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#003300, #001a00); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#003300, #001a00); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#003300, #001a00); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#003300, #001a00); /* Standard syntax */
-
 }
 
 	.shauli nav ul {
@@ -242,11 +246,16 @@ aside section {
 /*------------------------------
 =BLOG POST
 ------------------------------*/
+.blogPost {
+    // border: 1px solid black;
+    border-bottom: 0.5px dotted grey;
+    border-top: 1px dotted grey;
+}
 .blogPost header p, .blogPost header p a {
-		font-size: 14px;
-		font-style: italic;
-		color: #777;
-	}
+    font-size: 14px;
+    font-style: italic;
+    color: #777;
+}
 	
 		.blogPost header p a:hover {
 			text-decoration: none;
@@ -368,3 +377,12 @@ footer {
 		footer ul li a {
 			display: block;
 		}
+        /*Post Edit*/
+#PostContent form-control text-box multi-line {
+    padding: 50px 100px;
+}
+/*Canvas*/
+#myCanvas {
+    background: linear-gradient(lightgrey, white);
+    box-shadow: 3px 3px #DDDDDD;
+}

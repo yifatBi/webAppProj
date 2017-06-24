@@ -1,7 +1,16 @@
 ﻿<!doctype html>
-<!305229742 IDO COHEN>
 <html>
 <head>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+
+
     <title>Browser Page title</title>
     
     @Styles.Render("~/Content/css")
@@ -12,34 +21,59 @@
 </head>
 <body class="shaliBody">
    <div class="shauli">
-    <header>
-        <h1>Ha-Blog Shel Shauli</h1>
-        <!-- Audio #Wasnt sure if I should hide it. since it background music.-->
-        <!-- but it seem resonable to leave the option for the user to stop it-->
-        <audio controls>
-            <source src="content/sound/Ookay-Thief.mp3" type="audio/mpeg">
-            <source src="content/sound/Ookay-Thief.ogg" type="audio/ogg">
-            Your browser does not support the audio element.
-        </audio>
-    </header>
-    <nav>
-        <!-- Navigation -->
-        <ul>
-            <li>@Html.ActionLink("Blog", "Index", "PostsToShow")</li>
-            <li>@Html.ActionLink("Fans", "Index", "Fans")</li>
-            <li>@Html.ActionLink("Manage", "Index", "Posts")</li>
-            <li class="rss">
-                <div id="transDemo2">
-                    <div class="hover">
-                        <img src="~/content/images/rss.png" width="22" height="22">
-                    </div>
-                </div>
-            </li>
-            <li class="subscribe"><a href="#"><div class="rsslogo"></div>Subscribe via. RSS</a></li>
+       <header>
+           <canvas id="myCanvas" width="300" height="80" style="border:1px solid #d3d3d3;"></canvas>
+               <script>
+                   var c = document.getElementById("myCanvas");
+                   var ctx = c.getContext("2d");
+                   ctx.font = "30px Arial";
+                   ctx.fillText("Ha-Blog Shel Shauli", 10, 50);
+                   $('#myCanvas').hover(function () {
+                       $(this).toggle("slow");
+                   });
+               </script>
+
+           
+               @*<h1 id="site-headline">Ha-Blog Shel Shauli</h1>*@
 
 
-        </ul>
-    </nav>
+               <!-- Audio #Wasnt sure if I should hide it. since it background music.-->
+               <!-- but it seem resonable to leave the option for the user to stop it-->          
+               <audio controls>
+                   <source src="content/sound/Ookay-Thief.mp3" type="audio/mpeg">
+                   <source src="content/sound/Ookay-Thief.ogg" type="audio/ogg">
+                   Your browser does not support the audio element.
+               </audio>
+</header>
+
+       <nav id="shauli-nav">
+           <script>
+                   $(window).scroll(function () {
+                       
+                           $('#shauli-nav').animate({ top: "0px" });
+                       if($(window.top)) {
+                           $('#shauli-nav').animate({ top: "110px" });
+                       }
+                   });
+                  
+           </script>
+           <!-- Navigation -->
+           <ul>
+               <li>@Html.ActionLink("Blog", "Index", "PostsToShow")</li>
+               <li>@Html.ActionLink("Fans", "Index", "Fans")</li>
+               <li>@Html.ActionLink("Manage", "Index", "Posts")</li>
+               <li class="rss">
+                   <div id="transDemo2">
+                       <div class="hover">
+                           <img src="~/content/images/rss.png" width="22" height="22">
+                       </div>
+                   </div>
+               </li>
+               <li class="subscribe"><a href="#"><div class="rsslogo"></div>Subscribe via. RSS</a></li>
+
+
+           </ul>
+       </nav>
     <section id="intro">
         <!-- Introduction -->
 
@@ -50,11 +84,18 @@
         <img src="~/content/images/intro_shauli.png" alt="Shauli" />
     </section>
     <!-- Search -->
+
+    <!--DatePicker Jquery Script-->
+       <script>
+            $(function () {
+                $("#datepicker").datepicker();
+            });
+       </script>
     <section id="search">
         <form action="/">
-            <label>
-                Search by date:
-                <input type="date" name="date">
+            <p>
+             <label>                   
+                Search by date:<input type="text" id="datepicker">
             </label>
             <label>
                 <input type="text" name="name" placeholder="Author name">
@@ -65,11 +106,15 @@
             <label>
                 <input type="text" name="free" placeholder="Free words">
             </label>
-            Min commants:
-            <input type="range" name="commants" min="0" max="10">
-            <label>
-                <input type="submit" value="Search">
-            </label>
+            </p>
+            <p>
+                Minimum comments:
+                <input type="range" name="comments" min="0" max="10">
+                <label>
+                    <input type="submit" value="Search">
+                </label>
+            </p>
+
         </form>
     </section>
        </div>

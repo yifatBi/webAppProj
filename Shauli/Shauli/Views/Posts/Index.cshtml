@@ -17,21 +17,21 @@
         <th>
             @Html.DisplayNameFor(model => model.AuthorName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.AuthorURL)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PostDate)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.PostContent)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.ImagePath)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VideoPath)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -43,21 +43,21 @@
         <td>
             @Html.DisplayFor(modelItem => item.AuthorName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.AuthorURL)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.PostDate)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.PostContent)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.ImagePath)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.VideoPath)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
