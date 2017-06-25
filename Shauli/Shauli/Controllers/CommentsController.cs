@@ -25,12 +25,14 @@ namespace Shauli.Controllers
             }
             return View(comments.ToList());
         }
-        public void GetStatisticsPerUser()
+        //How much users commented on his post
+        public void GetStatisticsCommentPerUser()
         {
-            AccountsDBContext acc = new AccountsDBContext();
-            var join = acc.Accounts.Join(db.Posts, a => a.Usr, p => p.AuthorName, (a, p) => new { Account = a, Post = p })
-                .Join(db.Comments, ap => ap.Account.Usr, c => c.AuthorName, (ap, c) => new { Account = ap.Account, Post = ap.Post, Comment = c });
-            var groupBy= join.GroupBy(r => r.Account.Usr).ToList();
+
+            var list = from post in db.Posts
+                       join c in db.Comments on post.AuthorName equals c.AuthorName
+                       select new { Author = post.AuthorName, PostTitle = post.Title, CommentNum = c.ID };
+            var groupBy = list.GroupBy(r => new { r.Author, r.PostTitle }).ToList();
             ViewBag.stats = groupBy;
         }
         // GET: Comments/Details/5
