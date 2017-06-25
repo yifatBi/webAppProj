@@ -342,7 +342,6 @@ G:\MyProject\Shauli\Shauli\bin\Microsoft.Owin.Security.Twitter.xml
 G:\MyProject\Shauli\Shauli\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.dll
 G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.pdb
-G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\bin\roslyn\csc.exe
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -412,3 +411,4 @@ C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\bin\Microsoft.Owin.Secur
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\obj\Debug\Shauli.dll
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\obj\Debug\Shauli.pdb
+G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache

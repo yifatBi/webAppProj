@@ -64,7 +64,7 @@ namespace Shauli.Controllers
                 {
                     db.Accounts.Add(account);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("index", "PostsToShow");
                 }
             }
             return View(account);
