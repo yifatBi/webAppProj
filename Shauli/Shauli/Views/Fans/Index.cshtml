@@ -5,7 +5,30 @@
 }
 
 <h2>Index</h2>
+<section id="search">
+    <form>
+        <p>
+            <label>
+                Search by BirthDate:<input type="text" name="birthdate" id="datepicker" placeholder="Birthdate" value="@ViewBag.DateFilter">
+            </label>
+            <label>
+                <input type="text" name="firstName" placeholder="firstname" value="@ViewBag.FirstNameFilter">
+            </label>
+            <label>
+                <input type="text" name="lastName" placeholder="lastname" value="@ViewBag.LastNameFilter">
+            </label>
+            <label>
+                <input type="submit" value="Search">
+            </label>
+        </p>
+        <p>
+            @*Minimum comments:
+                <input type="range" name="commentsNum" min="0" max="10" value="@ViewBag.CommentsNumFilter">*@
 
+        </p>
+
+    </form>
+</section>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

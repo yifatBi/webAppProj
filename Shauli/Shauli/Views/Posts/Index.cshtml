@@ -5,7 +5,28 @@
 }
 
 <h2>Manage Posts</h2>
-
+<section id="search">
+    <form>
+        <label>Search post according data contains in post or his comments:</label>
+        <p>
+            <label>
+                Search by date:<input type="text" name="dateFilter" id="datepicker" value="@ViewBag.DateFilter">
+            </label>
+            <label>
+                <input type="text" name="name" placeholder="Author name" value="@ViewBag.NameFilter">
+            </label>
+            <label>
+                <input type="text" name="title" placeholder="title" value="@ViewBag.TitleFilter">
+            </label>
+            <label>
+                <input type="text" name="text" placeholder="Free words content" value="@ViewBag.TextFilter">
+            </label>
+            <label>
+                <input type="submit" value="Search">
+            </label>
+        </p>
+    </form>
+</section>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -17,22 +38,12 @@
         <th>
             @Html.DisplayNameFor(model => model.AuthorName)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.AuthorURL)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PostDate)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.PostContent)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </th>
         <th>
-            @Html.DisplayNameFor(model => model.VideoPath)
-        </th>*@
-        <th></th>
+            Comments Num
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -43,21 +54,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.AuthorName)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.AuthorURL)
-        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.PostDate)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.PostContent)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ImagePath)
-        </td>
         <td>
-            @Html.DisplayFor(modelItem => item.VideoPath)
-        </td>*@
+            @Html.DisplayFor(modelItem => item.Comments.Count)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

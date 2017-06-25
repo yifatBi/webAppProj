@@ -15,9 +15,30 @@ namespace Shauli.Controllers
         private FansDBContext db = new FansDBContext();
 
         // GET: Fans
-        public ActionResult Index()
+        public ActionResult Index(string firstName,string lastName,string birthdate)
         {
-            return View(db.Fans.ToList());
+            DateTime startDate, endDate;
+            var fans = from f in db.Fans select f;
+            if (!string.IsNullOrEmpty(firstName))
+            {
+                fans = fans.Where(f => f.FirstName.Contains(firstName));
+                ViewBag.FirstNameFilter = firstName;
+            }
+            //Filter accortding title
+            if (!string.IsNullOrEmpty(lastName))
+            {
+                fans = fans.Where(f => f.LastName.Contains(lastName));
+                ViewBag.LastNameFilter = lastName;
+            }
+            //Filter according date (take complete date)
+            if (!string.IsNullOrEmpty(birthdate) && DateTime.TryParse(birthdate, out startDate))
+            {
+                endDate = startDate;
+                endDate = endDate.AddDays(1);
+                fans = fans.Where(f => f.BirthDate >= startDate && f.BirthDate < endDate);
+                ViewBag.BirthdayFilter = birthdate;
+            }
+            return View(fans.ToList());
         }
 
         // GET: Fans/Details/5
