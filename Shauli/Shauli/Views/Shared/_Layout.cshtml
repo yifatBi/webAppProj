@@ -46,7 +46,7 @@
                        </div>
                        <ul class="nav navbar-nav">
                            <li class="active">@Html.ActionLink("Home", "Index", "PostsToShow")</li>
-                           <li>@Html.ActionLink("New post", "Create", "Posts")</li>
+    @if (Session["Username"] != null){<li>@Html.ActionLink("New post", "Create", "Posts")</li>}
                                 @if (Session["Admin"] != null && Session["Admin"].ToString().Equals("True"))
                                 {
                                     <li class="dropdown">
@@ -64,12 +64,11 @@
                                 }
                                   </ul>
                        <ul class="nav navbar-nav navbar-right">
-                           @if (Session["Username"] != null)
-                           {
-                               <li>
-                                   @Html.ActionLink("Logout", "Logout", "Accounts")
-                                   @Html.ActionLink("Welcome " + Session["Username"] + "!", "Details", "Accounts", new { id = Session["UserID"] }, null)
-                               </li>
+                                   @if (Session["Username"] != null)
+                                  {
+                                      <li>@Html.ActionLink("Logout", "Logout", "Accounts")</li>
+                                      <li>@Html.ActionLink("Welcome " + Session["Username"] + "!", "Details", "Accounts", new { id = Session["UserID"] }, null)</li>
+                                                   
                            }
                            else
                            {
