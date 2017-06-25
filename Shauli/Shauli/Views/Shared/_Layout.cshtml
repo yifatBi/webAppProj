@@ -1,63 +1,83 @@
 ﻿<!doctype html>
 <html>
 <head>
-
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/10.css")
+    @Styles.Render("~/Content/style/blog.css")
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
-    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 
     <title>Ha-Blog Shel Shauli</title>
     
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/10.css")
-    @Styles.Render("~/Content/style/blog.css")
+   
 
 </head>
 <body class="shaliBody">
    <div class="shauli">
        <div>
-           <nav id="shauli-nav">
+           
+           <div id="dynamic-navbar">
+               <script>
+                   $(document).ready(function () {                      
+                       $('#dynamic-navbar').removeClass("shaliBody");
+                       $('#dynamic-navbar').removeClass("shauli");
+                   });
+               
+               </script>
               
-               <!-- Navigation -->
-               <ul>
-                   <li>@Html.ActionLink("Blog", "Index", "PostsToShow")</li>
-                   <li>@Html.ActionLink("Fans", "Index", "Fans")</li>
-                   @if (Session["Admin"] != null && Session["Admin"].ToString().Equals("True"))
-            {
-                       <li>@Html.ActionLink("Manage", "Index", "Posts")</li>
-                   }
-                   <li class="rss">
-                       <div id="transDemo2">
-                           <div class="hover">
-                               <img src="~/content/images/rss.png" width="22" height="22">
-                           </div>
+               <!--Navigation Bar-->
+               <nav class="navbar navbar-inverse">
+                   <div class="container-fluid">
+                       <div class="navbar-header">
+                           <a class="navbar-brand" href="/poststoshow/index">Shauli's Blog</a>
                        </div>
-                   </li>
-                   <li class="subscribe"><a href="#"><div class="rsslogo"></div>RSS</a></li>
+                       <ul class="nav navbar-nav">
+                           <li class="active">@Html.ActionLink("Home", "Index", "PostsToShow")</li>
 
-
-                   @if (Session["Username"] != null)
-            {
-                       <li>
-                           @Html.ActionLink("Welcome " + Session["Username"] + "!", "Details", "Accounts", new
-               {
-                   id = Session["UserID"]
-               }, null)
-                       </li>
-                   }
-                   else
-                   {
-                       <li>@Html.ActionLink("Login", "Login", "Accounts")</li>
-                       <li>@Html.ActionLink("Register", "Register", "Accounts") </li>
-                   }
-               </ul>
-           </nav>
+                                @if (Session["Admin"] != null && Session["Admin"].ToString().Equals("True"))
+                                {
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown">
+                                            Admin Options
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Edit Posts", "Index", "Posts")</li>
+                                            <li>@Html.ActionLink("Edit Acounts", "Index", "AccountsManager")</li>
+                                            <li>@Html.ActionLink("Edit Fans", "Index", "Fans")</li>
+                                        </ul>
+                                    </li>
+                                }
+                                  </ul>
+                       <ul class="nav navbar-nav navbar-right">
+                           @if (Session["Username"] != null)
+                           {
+                               <li>
+                                   @Html.ActionLink("Welcome " + Session["Username"] + "!", "Details", "Accounts", new { id = Session["UserID"] }, null)
+                               </li>
+                           }
+                           else
+                           {
+                           <li><a href="/Accounts/Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                           <li><a href="/Accounts/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                           }
+                       </ul>
+                   </div>
+               </nav>
+           </div>
        </div>
 
        <div>
