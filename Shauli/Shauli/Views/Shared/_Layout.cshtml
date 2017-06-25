@@ -66,6 +66,7 @@
                            @if (Session["Username"] != null)
                            {
                                <li>
+                                   @Html.ActionLink("Logout", "Logout", "Accounts")
                                    @Html.ActionLink("Welcome " + Session["Username"] + "!", "Details", "Accounts", new { id = Session["UserID"] }, null)
                                </li>
                            }

@@ -82,6 +82,17 @@ namespace Shauli.Controllers
             return View(account);
         }
 
+        //logout
+        public ActionResult Logout()
+        {
+            Session["UserID"] = null;
+            Session["Username"] = null;
+            Session["Admin"] = null;
+            return RedirectToAction("index", "PostsToShow");
+        }
+
+
+
         //login page.
         public ActionResult Login()
         {
