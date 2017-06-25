@@ -16,26 +16,33 @@ namespace Shauli.Controllers
         private PostsDbContext db = new PostsDbContext();
 
         // GET: PostsToShow
-        public ActionResult Index(string name,string text,string dateFilter,int? commentNum)
+        public ActionResult Index(string name,string text,string dateFilter)
         {
-            DateTime date;
+            DateTime startDate,endDate;
+            //Fetch the comments
             var posts = db.Posts
                 .Include(p => p.Comments);
+            //Filter according given data
+            //filter according author name
             if (!string.IsNullOrEmpty(name))
             {
                 posts = posts.Where(p => p.AuthorName.Contains(name));
                 ViewBag.NameFilter = name;
             }
+            //Filter accortding text
             if (!string.IsNullOrEmpty(text))
             {
                 posts = posts.Where(p => p.Title.Contains(text) || p.PostContent.Contains(text));
                 ViewBag.TextFilter = text;
             }
-            //if(!string.IsNullOrEmpty(dateFilter)&&!DateTime.TryParse(dateFilter, out date))
-            //{
-            //    posts=posts.Where(p => p.PostDate>= date);
-            //    ViewBag.DateFilter = dateFilter;
-            //}
+            //Filter according date (take complete date)
+            if (!string.IsNullOrEmpty(dateFilter) && DateTime.TryParse(dateFilter, out startDate))
+            {
+                endDate = startDate;
+                endDate=endDate.AddDays(1);
+                posts = posts.Where(p => p.PostDate>=startDate && p.PostDate<endDate);
+                ViewBag.DateFilter = dateFilter;
+            }
             return View(posts.OrderByDescending(p => p.PostDate).ToList());
         }
 
