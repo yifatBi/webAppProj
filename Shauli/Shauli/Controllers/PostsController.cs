@@ -17,10 +17,13 @@ namespace Shauli.Controllers
         public ActionResult Index(string name,string title,string text,string dateFilter)
         {
             DateTime startDate,endDate;
-            var list=db.Posts.Join(db.Comments,
-                p => p.ID,
-                c => c.PostID, (p, c) => new { Post = p, Comment = c });
-            var posts = from p in db.Posts select p;
+            			//var post=db.Posts.Join(db.Comments,
+   //             p => p.ID,
+   //             c => c.PostID, (p, c) => new { Post = p, Comment = c });
+			var list = from p in db.Posts
+						join c in db.Comments on p.ID equals c.PostID into cc
+						from com in cc.DefaultIfEmpty()
+			            select new { Post=p,Comment=com};
             if (!string.IsNullOrEmpty(name))
             {
                 list = list.Where(r => r.Comment.AuthorName.Contains(text) || r.Post.AuthorName.Contains(text));
