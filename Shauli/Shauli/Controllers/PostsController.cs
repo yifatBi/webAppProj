@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Shauli.Models;
 
@@ -15,9 +13,42 @@ namespace Shauli.Controllers
         private PostsDbContext db = new PostsDbContext();
 
         // GET: Posts
-        public ActionResult Index(string name,string text)
+        // Get posts that contains this data in the post or the comment
+        public ActionResult Index(string name,string title,string text,string dateFilter)
         {
-            return View(db.Posts.ToList());
+            DateTime startDate,endDate;
+            var list=db.Posts.Join(db.Comments,
+                p => p.ID,
+                c => c.PostID, (p, c) => new { Post = p, Comment = c });
+            var posts = from p in db.Posts select p;
+            if (!string.IsNullOrEmpty(name))
+            {
+                list = list.Where(r => r.Comment.AuthorName.Contains(text) || r.Post.AuthorName.Contains(text));
+                ViewBag.NameFilter = name;
+            }
+            //Filter accortding title
+            if (!string.IsNullOrEmpty(title))
+            {
+                list = list.Where(r => r.Post.Title.Contains(title)|| r.Comment.Title.Contains(title));
+                ViewBag.TitleFilter = title;
+            }
+            //Filter accortding content in the post or comment
+            if (!string.IsNullOrEmpty(text))
+            {
+                list = list.Where(r => r.Comment.CommentContent.Contains(text) || r.Post.PostContent.Contains(text));
+                ViewBag.TextFilter = text;
+            }
+            //Filter according date updated of comment or post
+            if (!string.IsNullOrEmpty(dateFilter) && DateTime.TryParse(dateFilter, out startDate))
+            {
+                endDate = startDate;
+                endDate = endDate.AddDays(1);
+                list = list.Where(r => (r.Comment.CommentDate>=startDate && r.Comment.CommentDate < endDate) ||
+                                    (r.Post.PostDate >= startDate && r.Post.PostDate < endDate));
+                ViewBag.DateFilter = dateFilter;
+            }
+            //Return the posts that contain the expected data
+            return View(list.Select(r=>r.Post).Distinct().ToList());
         }
 
         // GET: Posts/Details/5
