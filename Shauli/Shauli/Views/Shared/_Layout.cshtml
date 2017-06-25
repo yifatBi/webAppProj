@@ -3,7 +3,7 @@
 <head>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/10.css")
+    @Styles.Render("/Content/10.css")
     @Styles.Render("~/Content/style/blog.css")
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +45,7 @@
                            <a class="navbar-brand" href="/poststoshow/index">Shauli's Blog</a>
                        </div>
                        <ul class="nav navbar-nav">
-                           <li class="active">@Html.ActionLink("Home", "Index", "PostsToShow")</li>
+                           <li>@Html.ActionLink("Home", "Index", "PostsToShow")</li>
 
                                 @if (Session["Admin"] != null && Session["Admin"].ToString().Equals("True"))
                                 {
@@ -80,36 +80,39 @@
            </div>
        </div>
 
-       <div>
-          <canvas id="myCanvas" width="300" height="80" ></canvas>
-           <script>
-               var c = document.getElementById("myCanvas");
-               var ctx = c.getContext("2d");
-               ctx.font = "30px Arial";
-               ctx.fillText("Ha-Blog Shel Shauli", 10, 50);
+       <div class="headline-music">
+           <p>
+               <canvas id="myCanvas" width="300" height="80"></canvas>
+               <script>
+                   var c = document.getElementById("myCanvas");
+                   var ctx = c.getContext("2d");
+                   ctx.font = "30px Arial";
+                   ctx.fillText("Ha-Blog Shel Shauli", 10, 50);
 
 
-               $('#myCanvas').mouseenter(function () {                  
-                   $(this).addClass('hover');                   
-                    $(this).css({cursor:'pointer'});
+                   $('#myCanvas').mouseenter(function () {
+                       $(this).addClass('hover');
+                       $(this).css({ cursor: 'pointer' });
 
-               });
-               $('#myCanvas').mouseleave(function () {
-                   $(this).removeClass('hover');
-               });
-               $('#myCanvas').click(function () {   
-                   
-               });
+                   });
+                   $('#myCanvas').mouseleave(function () {
+                       $(this).removeClass('hover');
+                   });
+                   $('#myCanvas').click(function () {
+                         
+                   });
 
-           </script>
-
-           <!-- Audio #Wasnt sure if I should hide it. since it background music.-->
-           <!-- but it seem resonable to leave the option for the user to stop it-->
-           <audio controls>
-               <source src="content/sound/Ookay-Thief.mp3" type="audio/mpeg">
-               <source src="content/sound/Ookay-Thief.ogg" type="audio/ogg">
-               Your browser does not support the audio element.
-           </audio>
+               </script>
+           </p>
+           <p>
+               <!-- Audio #Wasnt sure if I should hide it. since it background music.-->
+               <!-- but it seem resonable to leave the option for the user to stop it-->
+               <audio controls>
+                   <source src="content/sound/Ookay-Thief.mp3" type="audio/mpeg">
+                   <source src="content/sound/Ookay-Thief.ogg" type="audio/ogg">
+                   Your browser does not support the audio element.
+               </audio>
+           </p>
        </div>
     <section id="intro">
         <!-- Introduction -->

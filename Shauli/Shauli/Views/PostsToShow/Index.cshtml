@@ -3,7 +3,23 @@
 @{
     ViewBag.Title = "Index";
 }
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <section id="search">
+
+    <script>
+                   $("#datepicker").datepicker().on("show", function () {
+                       $(this).val("@ViewBag.DateFilter");
+                   });
+                   $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy");
+                   $("#datepicker").datepicker("option", "showAnim", "slide");
+                   $("#datepicker").val("@ViewBag.DateFilter");
+                  });
+</script>
     <form>
         <p>
             <label>
@@ -16,7 +32,7 @@
                 <input type="text" name="text" placeholder="Free words" value="@ViewBag.TextFilter">
             </label>
             <label>
-                <input type="submit" value="Search">
+                <input class="btn-primary" type="submit" value="Search">
             </label>
         </p>
         <p>
@@ -96,33 +112,35 @@
         <div class="form-horizontal">
             <h3>Comment</h3>
             <hr />
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.AuthorName, "Name")
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.AuthorName)
+            <p id="commentor-details">
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => comment.AuthorName, "Name")
+                    <div class="col-md-111">
+                        @Html.EditorFor(modelItem => comment.AuthorName)
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.AuthorURL, "Url")
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.AuthorURL)
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => comment.AuthorURL, "Url")
+                    <div class="col-md-111">
+                        @Html.EditorFor(modelItem => comment.AuthorURL)
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.Title)
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.Title)
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => comment.Title)
+                    <div class="col-md-111">
+                        @Html.EditorFor(modelItem => comment.Title)
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.CommentContent)
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.CommentContent)
+            </p>
+            <p>
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => comment.CommentContent)
+                    <div class="col-md-111">
+                        @Html.EditorFor(modelItem => comment.CommentContent)
+                    </div>
                 </div>
-            </div>
-
-        <p><input type="submit" value="Post comment" /></p>
+            </p>
+            <p><input class="btn-success" type="submit" value="Post comment" /></p>
 
         </div>
     }

@@ -6,6 +6,16 @@
 
 <h2>Details</h2>
 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV3pIhglSMXQTHndsV4sq7dSzwaq_jDzw&callback=initMap">
+</script>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
 <div>
     <h4>Account</h4>
     <hr />
@@ -75,7 +85,44 @@
         </dd>
 
     </dl>
+    <div id="map"></div>
 </div>
+
+<script>
+    var geocoder;
+    var map;
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(-34.397, 300.644);
+        var mapOptions = {
+            zoom: 13,
+            center: latlng
+        }
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    }
+
+    function codeAddress() {
+        var address1 = 'Israel,Tel Aviv,HaMasger 6';
+        var address= '@Model.Country,@Model.City,@Model.Address';
+
+        geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+        });
+        } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+        }
+        });
+        }
+
+        initialize();
+        codeAddress();
+        </script>
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
