@@ -340,6 +340,5 @@ G:\MyProject\Shauli\Shauli\bin\Microsoft.Owin.Security.OAuth.xml
 G:\MyProject\Shauli\Shauli\bin\Microsoft.Owin.Security.Google.xml
 G:\MyProject\Shauli\Shauli\bin\Microsoft.Owin.Security.Twitter.xml
 G:\MyProject\Shauli\Shauli\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache
 G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.dll
 G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.pdb
