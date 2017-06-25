@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shauli.Models;
+using System.Data.Entity.Core.Objects;
 
 namespace Shauli.Controllers
 {
@@ -15,13 +16,27 @@ namespace Shauli.Controllers
         private PostsDbContext db = new PostsDbContext();
 
         // GET: PostsToShow
-        public ActionResult Index()
+        public ActionResult Index(string name,string text,string dateFilter,int? commentNum)
         {
+            DateTime date;
             var posts = db.Posts
-                .Include(p => p.Comments)
-                .OrderByDescending(p => p.PostDate);
-            return View(posts.ToList());
-            //return View(db.Posts.ToList());
+                .Include(p => p.Comments);
+            if (!string.IsNullOrEmpty(name))
+            {
+                posts = posts.Where(p => p.AuthorName.Contains(name));
+                ViewBag.NameFilter = name;
+            }
+            if (!string.IsNullOrEmpty(text))
+            {
+                posts = posts.Where(p => p.Title.Contains(text) || p.PostContent.Contains(text));
+                ViewBag.TextFilter = text;
+            }
+            //if(!string.IsNullOrEmpty(dateFilter)&&!DateTime.TryParse(dateFilter, out date))
+            //{
+            //    posts=posts.Where(p => p.PostDate>= date);
+            //    ViewBag.DateFilter = dateFilter;
+            //}
+            return View(posts.OrderByDescending(p => p.PostDate).ToList());
         }
 
         //Create new action result for comment.

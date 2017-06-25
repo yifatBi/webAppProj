@@ -15,7 +15,7 @@ namespace Shauli.Controllers
         private PostsDbContext db = new PostsDbContext();
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(string name,string text)
         {
             return View(db.Posts.ToList());
         }

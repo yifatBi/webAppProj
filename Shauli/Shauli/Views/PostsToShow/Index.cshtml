@@ -3,7 +3,32 @@
 @{
     ViewBag.Title = "Index";
 }
+<section id="search">
+    <form>
+        <p>
+            <label>
+                Search by date:<input type="text" name="dateFilter" id="datepicker" value="@ViewBag.DateFilter">
+            </label>
+            <label>
+                <input type="text" name="name" placeholder="Author name" value="@ViewBag.NameFilter">
+            </label>
+            @*<label>
+                <input type="email" name="email" placeholder="Author email">
+            </label>*@
+            <label>
+                <input type="text" name="text" placeholder="Free words" value="@ViewBag.TextFilter">
+            </label>
+        </p>
+        <p>
+            Minimum comments:
+            <input type="range" name="comments" min="0" max="10">
+            <label>
+                <input type="submit" value="Search">
+            </label>
+        </p>
 
+    </form>
+</section>
 
 @foreach (var post in Model)
 {
