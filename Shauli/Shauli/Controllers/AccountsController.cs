@@ -32,7 +32,7 @@ namespace Shauli.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Account account = db.Accounts.Find(Id);
-            if (account == null || !Id.ToString().Equals(Session["UserID"].ToString()))//Prevent url get details of another user.
+            if (account == null)//If user does not exist.
             {
                 return HttpNotFound();
             }

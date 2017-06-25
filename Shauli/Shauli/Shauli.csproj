@@ -294,22 +294,15 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Fans\Create.cshtml" />
     <Content Include="Views\Fans\Delete.cshtml" />
     <Content Include="Views\Fans\Details.cshtml" />
     <Content Include="Views\Fans\Edit.cshtml" />
     <Content Include="Views\Fans\Index.cshtml" />
-    <Content Include="Views\PostsToShow\Create.cshtml" />
-    <Content Include="Views\PostsToShow\Delete.cshtml" />
-    <Content Include="Views\PostsToShow\Details.cshtml" />
-    <Content Include="Views\PostsToShow\Edit.cshtml" />
     <Content Include="Views\PostsToShow\Index.cshtml" />
     <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />

@@ -77,7 +77,8 @@
                 <header>
                     <h4>@comment.Title</h4>
                     <p>
-                        <a href="@comment.AuthorURL">@comment.AuthorName</a>
+                        <a href="@comment.AuthorURL">@comment.AuthorName</a> |
+                        @comment.CommentDate
                     </p>
                 </header>
                 <p>@comment.CommentContent</p>
@@ -95,35 +96,32 @@
 
 
         <div class="form-horizontal">
-            <h3>Comment</h3>
-            <hr />
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.AuthorName, "Name")
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.AuthorName)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.AuthorURL, "Url")
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.AuthorURL)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.Title)
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.Title)
-                </div>
-            </div>
+            @if (Session["UserID"] != null)
+            {
+                <h3>Comment</h3>
+                <hr />
 
-            <div class="form-group">
-                @Html.LabelFor(modelItem => comment.CommentContent)
-                <div class="col-md-111">
-                    @Html.EditorFor(modelItem => comment.CommentContent)
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => comment.Title)
+                    <div class="col-md-111">
+                        @Html.EditorFor(modelItem => comment.Title)
+                    </div>
                 </div>
-            </div>
 
-        <p><input type="submit" value="Post comment" /></p>
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => comment.CommentContent)
+                    <div class="col-md-111">
+                        @Html.EditorFor(modelItem => comment.CommentContent)
+                    </div>
+                </div>
+
+                <p><input type="submit" value="Post comment" /></p>
+            }
+            else
+            {
+               <p> You need to be logged in if you want to comment.</p>
+            }
+
 
         </div>
     }

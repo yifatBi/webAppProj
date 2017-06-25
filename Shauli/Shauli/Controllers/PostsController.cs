@@ -76,15 +76,16 @@ namespace Shauli.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,AuthorName,AuthorURL,PostContent,ImagePath,VideoPath")] Posts posts)
+        public ActionResult Create([Bind(Include = "ID,Title,PostContent,ImagePath,VideoPath")] Posts posts)
         {
             posts.PostDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 if (Session["UserID"] != null)//Check if session is running.
                 {
+
                     posts.AuthorName = Session["Username"].ToString();
+                    posts.AuthorURL = "/Accounts/Details/" + Session["UserID"].ToString();
                     db.Posts.Add(posts);
                     db.SaveChanges();
                 }

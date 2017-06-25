@@ -14,13 +14,11 @@ namespace Shauli.Models
         [Required]
         public string Title { get; set; }
 
-        [Required]
-        [Display(Name = "Author Name")]
+
+
         public string AuthorName { get; set; }
 
-        [Required]
-        [DataType(DataType.Url)]
-        [Display(Name = "Author Website")]
+
         public string AuthorURL { get; set; }
 
         [Required]
