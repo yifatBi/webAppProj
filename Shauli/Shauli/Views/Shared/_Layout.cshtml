@@ -28,7 +28,10 @@
                <ul>
                    <li>@Html.ActionLink("Blog", "Index", "PostsToShow")</li>
                    <li>@Html.ActionLink("Fans", "Index", "Fans")</li>
-                   <li>@Html.ActionLink("Manage", "Index", "Posts")</li>
+                   @if (Session["Admin"] != null && Session["Admin"].ToString().Equals("True"))
+            {
+                       <li>@Html.ActionLink("Manage", "Index", "Posts")</li>
+                   }
                    <li class="rss">
                        <div id="transDemo2">
                            <div class="hover">
@@ -36,7 +39,23 @@
                            </div>
                        </div>
                    </li>
-                   <li class="subscribe"><a href="#"><div class="rsslogo"></div>Subscribe via. RSS</a></li>
+                   <li class="subscribe"><a href="#"><div class="rsslogo"></div>RSS</a></li>
+
+
+                   @if (Session["Username"] != null)
+            {
+                       <li>
+                           @Html.ActionLink("Welcome " + Session["Username"] + "!", "Details", "Accounts", new
+               {
+                   id = Session["UserID"]
+               }, null)
+                       </li>
+                   }
+                   else
+                   {
+                       <li>@Html.ActionLink("Login", "Login", "Accounts")</li>
+                       <li>@Html.ActionLink("Register", "Register", "Accounts") </li>
+                   }
                </ul>
            </nav>
        </div>
