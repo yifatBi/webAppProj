@@ -47,6 +47,7 @@
 
                     by <a href="@post.AuthorURL">@Html.DisplayFor(modelItem => post.AuthorName)</a>
                     - <a href="#comments">@post.Comments.Count comments</a>
+                    <a href="~/?dateFilter=@post.PostDate&name=&text="> @post.PostDate</a>
                 </p>
             </header>
             <div>

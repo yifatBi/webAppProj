@@ -82,8 +82,13 @@ namespace Shauli.Controllers
             posts.PostDate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.Posts.Add(posts);
-                db.SaveChanges();
+                if (Session["UserID"] != null)//Check if session is running.
+                {
+                    posts.AuthorName = Session["Username"].ToString();
+                    db.Posts.Add(posts);
+                    db.SaveChanges();
+                }
+                    
                 return RedirectToAction("Index");
             }
 
