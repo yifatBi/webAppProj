@@ -6,6 +6,19 @@
 
 <h2>Details</h2>
 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV3pIhglSMXQTHndsV4sq7dSzwaq_jDzw&callback=initMap">
+</script>
+
+@* Map styling *@
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+
 <div>
     <h4>Account</h4>
     <hr />
@@ -73,9 +86,101 @@
         <dd>
             @Html.DisplayFor(model => model.IsAdmin)
         </dd>
-
     </dl>
+    @* Map which displays each user address *@
+    <div id="map"></div>
 </div>
+
+    @* Script for the Map *@
+
+
+<script>
+    var geocoder;
+    var map;
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(-34.397, 300.644);
+        var mapOptions = {
+            zoom: 13,
+            center: latlng
+        }
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    }
+
+    function codeAddress() {
+        var address1 = 'Israel,Tel Aviv,HaMasger 6';
+        var address= '@Model.Country,@Model.City,@Model.Address';
+
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    initialize();
+    codeAddress();
+</script>
+
+
+
+
+@*<script type="text/javascript">
+
+    var geocoder;
+    var map;
+    var address = '@Model.Country,@Model.City,@Model.Address';
+
+
+    function initMap() {
+        geocoder = new google.maps.Geocoder();
+        
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+
+
+    geocoder.geocode({ 'address': address }, function (results, status) {
+
+        if (status == 'OK') {
+            alert("asdsdsdssd")
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            alert(latitude);
+        }
+    });
+
+
+    var getLocation = function (address) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': address }, function (results, status) {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                console.log(latitude, longitude);
+            }
+        });
+        
+
+    }
+</script>*@
+
+
+
+
 <p>
    @Html.ActionLink("Home", "Index", "PostsToShow")
 </p>
