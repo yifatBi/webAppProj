@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using Shauli.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Xml.Linq;
+using Shauli.CountryWebService;
 
 namespace Shauli.Controllers
 {
@@ -40,6 +42,16 @@ namespace Shauli.Controllers
         // GET: Accounts/Register
         public ActionResult Register()
         {
+            countrySoapClient contryes = new countrySoapClient();
+            var results = contryes.GetCountries();
+            XElement elem = XElement.Parse(results);
+            List<SelectListItem> values = new List<SelectListItem>();
+            //var model = new List<String>();
+            foreach (var ta in elem.Elements("Table"))
+            {
+                values.Add(new SelectListItem { Text = ta.Element("Name").Value, Value = ta.Element("Name").Value });
+            }
+            ViewBag.CountryList = values;
             return View();
         }
 
@@ -92,6 +104,7 @@ namespace Shauli.Controllers
             }
             catch (Exception e)
             {
+                
                 ModelState.AddModelError("", "Wrong username or password.");
             }
 
