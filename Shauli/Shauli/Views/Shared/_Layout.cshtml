@@ -85,9 +85,11 @@
 
     <!--DatePicker Jquery Script-->
        <script>
-            $(function () {
-                $("#datepicker").datepicker();
-            });
+               $(function () {
+                   $("#datepicker").datepicker();
+                   $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy");      
+                   $("#datepicker").datepicker("option", "showAnim", "slide");      
+                  });
        </script>
     <section id="search">
         <form action="/">
