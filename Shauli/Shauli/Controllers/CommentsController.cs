@@ -15,9 +15,14 @@ namespace Shauli.Controllers
         private PostsDbContext db = new PostsDbContext();
 
         // GET: Comments
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
             var comments = db.Comments.Include(c => c.Post);
+            if (!string.IsNullOrEmpty(query))
+            {
+                comments = comments.Where(c => c.AuthorName.Contains(query) || c.CommentContent.Contains(query) || c.Title.Contains(query)|| c.Post.Title.Contains(query));
+                ViewBag.Query = query;
+            }
             return View(comments.ToList());
         }
 

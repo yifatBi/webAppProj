@@ -36,7 +36,7 @@ namespace Shauli.Controllers
                 endDate = startDate;
                 endDate = endDate.AddDays(1);
                 fans = fans.Where(f => f.BirthDate >= startDate && f.BirthDate < endDate);
-                ViewBag.BirthdayFilter = birthdate;
+                ViewBag.DateFilter = birthdate;
             }
             return View(fans.ToList());
         }

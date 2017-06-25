@@ -5,7 +5,10 @@
 }
 
 <h2>Index</h2>
-
+<form>
+    <input type="text" name="query" value="@ViewBag.Query" />
+    <input type="submit" value="Search" />
+</form>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
