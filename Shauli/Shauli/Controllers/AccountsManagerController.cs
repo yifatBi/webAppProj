@@ -80,6 +80,11 @@ namespace Shauli.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Usr,Password,ConfirmPassword,Email,Address,City,Country,IsAdmin")] Account account)
         {
+            if (Session["Admin"] == null || !Session["Admin"].ToString().Equals("True"))
+            {
+                ModelState.AddModelError("", "Only admin can make changes.");
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(account).State = EntityState.Modified;

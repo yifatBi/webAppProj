@@ -179,7 +179,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\AccountsManagerController.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fans.cs" />
     <Compile Include="Models\IdentityModels.cs" />
