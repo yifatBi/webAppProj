@@ -25,7 +25,14 @@ namespace Shauli.Controllers
             }
             return View(comments.ToList());
         }
-
+        public void GetStatisticsPerUser()
+        {
+            AccountsDBContext acc = new AccountsDBContext();
+            var join = acc.Accounts.Join(db.Posts, a => a.Usr, p => p.AuthorName, (a, p) => new { Account = a, Post = p })
+                .Join(db.Comments, ap => ap.Account.Usr, c => c.AuthorName, (ap, c) => new { Account = ap.Account, Post = ap.Post, Comment = c });
+            var groupBy= join.GroupBy(r => r.Account.Usr).ToList();
+            ViewBag.stats = groupBy;
+        }
         // GET: Comments/Details/5
         public ActionResult Details(int? id)
         {
