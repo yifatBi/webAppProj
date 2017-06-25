@@ -342,7 +342,6 @@ C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\bin\Microsoft.Owin.Secur
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\obj\Debug\Shauli.dll
 C:\Users\yifat\Documents\proj2\webAppProj\Shauli\Shauli\obj\Debug\Shauli.pdb
-G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache
 C:\Users\Omri\Downloads\B.s.c Computer Science\Semester B\Web Dev\FinalProject\webAppProj\Shauli\Shauli\bin\roslyn\csc.exe
 C:\Users\Omri\Downloads\B.s.c Computer Science\Semester B\Web Dev\FinalProject\webAppProj\Shauli\Shauli\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Omri\Downloads\B.s.c Computer Science\Semester B\Web Dev\FinalProject\webAppProj\Shauli\Shauli\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -412,3 +411,28 @@ C:\Users\Omri\Downloads\B.s.c Computer Science\Semester B\Web Dev\FinalProject\w
 C:\Users\Omri\Downloads\B.s.c Computer Science\Semester B\Web Dev\FinalProject\webAppProj\Shauli\Shauli\obj\Debug\Shauli.dll
 C:\Users\Omri\Downloads\B.s.c Computer Science\Semester B\Web Dev\FinalProject\webAppProj\Shauli\Shauli\obj\Debug\Shauli.pdb
 C:\Users\Omri\Downloads\B.s.c Computer Science\Semester B\Web Dev\FinalProject\webAppProj\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache
+G:\MyProject\Shauli\Shauli\obj\Debug\Shauli.csprojResolveAssemblyReference.cache
+G:\MyProject\Shauli\Shauli\bin\Autofac.dll
+G:\MyProject\Shauli\Shauli\bin\Nito.AsyncEx.Context.dll
+G:\MyProject\Shauli\Shauli\bin\Nito.AsyncEx.Tasks.dll
+G:\MyProject\Shauli\Shauli\bin\Nito.Disposables.dll
+G:\MyProject\Shauli\Shauli\bin\System.Net.Http.dll
+G:\MyProject\Shauli\Shauli\bin\System.Reflection.TypeExtensions.dll
+G:\MyProject\Shauli\Shauli\bin\System.Runtime.Serialization.Primitives.dll
+G:\MyProject\Shauli\Shauli\bin\System.Security.Cryptography.Algorithms.dll
+G:\MyProject\Shauli\Shauli\bin\System.Security.Cryptography.Encoding.dll
+G:\MyProject\Shauli\Shauli\bin\System.Security.Cryptography.Primitives.dll
+G:\MyProject\Shauli\Shauli\bin\System.Security.Cryptography.X509Certificates.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.Controllers.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.Core.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.Credentials.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.Factories.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.Logic.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.Security.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.Streams.dll
+G:\MyProject\Shauli\Shauli\bin\Tweetinvi.WebLogic.dll
+G:\MyProject\Shauli\Shauli\bin\Autofac.xml
+G:\MyProject\Shauli\Shauli\bin\Nito.AsyncEx.Context.xml
+G:\MyProject\Shauli\Shauli\bin\Nito.AsyncEx.Tasks.xml
+G:\MyProject\Shauli\Shauli\bin\Nito.Disposables.xml

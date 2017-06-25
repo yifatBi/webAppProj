@@ -46,7 +46,7 @@
                        </div>
                        <ul class="nav navbar-nav">
                            <li class="active">@Html.ActionLink("Home", "Index", "PostsToShow")</li>
-
+                           <li>@Html.ActionLink("New post", "Create", "Posts")</li>
                                 @if (Session["Admin"] != null && Session["Admin"].ToString().Equals("True"))
                                 {
                                     <li class="dropdown">
@@ -58,6 +58,7 @@
                                             <li>@Html.ActionLink("Edit Posts", "Index", "Posts")</li>
                                             <li>@Html.ActionLink("Edit Acounts", "Index", "AccountsManager")</li>
                                             <li>@Html.ActionLink("Edit Fans", "Index", "Fans")</li>
+                                            <li>@Html.ActionLink("Tweet", "Tweet", "Tweets")</li>
                                         </ul>
                                     </li>
                                 }
@@ -142,12 +143,11 @@
         <aside class="shauli-aside">
             <section>
                 <header>
-                    <h3>Categories</h3>
+                    <h3>Tweets</h3>
                 </header>
                 <ul>
-                    <li><a href="#">Lorem ipsum dolor</a></li>
-                    <li><a href="#">Sit amet consectetur</a></li>
-                    <li><a href="#">Adipisicing elit sed</a></li>
+                    <a class="twitter-timeline" href="https://twitter.com/shaulisblog">Tweets by shaulisblog</a>
+                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </ul>
             </section>
             <section>
