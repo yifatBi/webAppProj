@@ -58,7 +58,7 @@ namespace Shauli.Controllers
         // POST: Accounts/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "Id,Usr,Password,ConfirmPassword,Email,Address,City,Country")] Account account)
+        public ActionResult Register([Bind(Include = "Id,Usr,Password,ConfirmPassword,Email,Address,City,Country,IsAdmin")] Account account)
         {
             try
             {//check if user already exist...
