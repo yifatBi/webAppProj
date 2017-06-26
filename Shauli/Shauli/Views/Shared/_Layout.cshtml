@@ -34,10 +34,14 @@
                    $(document).ready(function () {                      
                        $('#dynamic-navbar').removeClass("shaliBody");
                        $('#dynamic-navbar').removeClass("shauli");
+
+                       $('.navbar li').hover(function () {
+                           $(this).toggleClass('highlighted');                          
+                       });
                    });
                
                </script>
-              
+
                <!--Navigation Bar-->
                <nav class="navbar navbar-inverse">
                    <div class="container-fluid">
@@ -65,8 +69,11 @@
                                   </ul>
                        <ul class="nav navbar-nav navbar-right">
                                    @if (Session["Username"] != null)
-                                  {
-                                      <li>@Html.ActionLink("Logout", "Logout", "Accounts")</li>
+                                   {
+                                      
+                                        <li><a href="/Accounts/Logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+
+                                      @*<li>@Html.ActionLink("Logout", "Logout", "Accounts")</li>*@
                                       <li>@Html.ActionLink("Welcome " + Session["Username"] + "!", "Details", "Accounts", new { id = Session["UserID"] }, null)</li>
                                                    
                            }
@@ -81,7 +88,7 @@
            </div>
        </div>
 
-       <div>
+       <div class="canvas-music">
           <canvas id="myCanvas" width="300" height="80" ></canvas>
            <script>
                var c = document.getElementById("myCanvas");

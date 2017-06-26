@@ -63,6 +63,7 @@ body.shaliBody {
 =NAVIGATION
 ------------------------------*/
 
+
 #dynamic-navbar {
     z-index: 9 !important;
     position: fixed;
@@ -70,76 +71,9 @@ body.shaliBody {
     width: 100%;
 }
 
-
-/*#shauli-nav {
-    z-index: 99 !important;
-    position: fixed;
-    left: 0;
-    margin-top: -10px;
-    width: 100%;
-    padding: 17px;
-    overflow: hidden;
-    background: #333; /* For browsers that do not support gradients */
-    // background: -webkit-linear-gradient(#003300, #001a00); /* For Safari 5.1 to 6.0 */
-    // background: -o-linear-gradient(#003300, #001a00); /* For Opera 11.1 to 12.0 */
-    // background: -moz-linear-gradient(#003300, #001a00); /* For Firefox 3.6 to 15 */
-    // background: linear-gradient(#003300, #001a00); /* Standard syntax */
-}*/
-
-	/*.shauli nav ul {
-		margin: 0 auto;
-		width: 940px;
-		list-style: none;
-	}*/
-
-		.shauli nav ul li {
-			float: left;
-            
-		}
-		
-			/*.shauli nav ul li a {
-				display: block;
-				margin-right: 20px;
-				width: 140px;
-				font-size: 14px;
-				line-height: 44px;
-				text-align: center;
-				text-decoration: none;
-				color: #f2f2f2;
-			}*/
-			
-				.shauli nav ul li a:hover {
-					color: black;
-                    background-color:#ddd;
-				}
-			
-			/*.shauli nav ul li.selected a {
-				color: #fff;
-			}*/
-			
-			/*.shauli nav ul li.subscribe a {
-				margin-left: 22px;
-				padding-left: 30px;
-				text-align: left;
-				/*background: url("images/rss.png") left center no-repeat;*/
-			/*}*/
-			/*.shauli nav ul li.rss{ 
-                                position:absolute; 
-                                margin-left: 655px; 
-                                margin-top: 10px; 
-                                z-index: 1; 
-                        } 
-						
-			#transDemo2 div { 
-				height:23px; 
-				width:23px; 
-				text-align:center; 
-				transition: all 2s ease-in-out; 
-			}*/*/ 
-
-#transDemo2 div:hover, #transDemo2 div.hover_effect { 
-
-  transform:rotate(720deg) scale(2,2); 
+/*activated when hovering element*/
+.highlighted {
+    background-color: lightgrey;
 }
 
 
@@ -159,12 +93,17 @@ body.shaliBody {
         background: linear-gradient( grey,white);
     }
 
+.canvas-music {
+    width: 50%;
+    margin-left: 300px;
+}
+
+/*Intro*/
 #intro {
     z-index: -1;
     position: relative;
     margin-top: 66px;
     padding: 44px;
-    /*background: #467612 url("images/intro_background.png") repeat-x;*/
     /*Gradient background*/
     background: #B3DC10; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#B3DC10, #477712); /* For Safari 5.1 to 6.0 */
@@ -272,11 +211,17 @@ aside section {
 /*------------------------------
 =BLOG POST
 ------------------------------*/
+.blogPost h2 {
+    font-family: 'acme';
+
+}
+
 .blogPost {
     border-bottom: 0.5px dotted grey;
     border-top: 1px dotted grey;
 }
 .blogPost header p, .blogPost header p a {
+
     font-size: 14px;
     font-style: italic;
     color: #777;
@@ -354,7 +299,7 @@ section#search label{
   transform:rotate(720deg) scale(2,2);
 }
 
-
+/*FOOTER*/
 footer {
 	position: absolute;
 	left: 0;
