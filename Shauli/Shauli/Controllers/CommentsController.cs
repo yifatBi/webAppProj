@@ -15,14 +15,27 @@ namespace Shauli.Controllers
         private PostsDbContext db = new PostsDbContext();
 
         // GET: Comments
-        public ActionResult Index(string query)
+        public ActionResult Index(string pID,string query)
         {
-            var comments = db.Comments.Include(c => c.Post);
-            if (!string.IsNullOrEmpty(query))
+            if (string.IsNullOrEmpty(query))
+            { query = ""; }
+
+            var comments = db.Comments.Where(c => (c.AuthorName.Contains(query) || 
+            c.CommentContent.Contains(query) || c.Title.Contains(query) || 
+            c.Post.Title.Contains(query))).Include(c => c.Post);
+            ViewBag.Query = query;
+            
+            if (!string.IsNullOrEmpty(pID))
             {
-                comments = comments.Where(c => c.AuthorName.Contains(query) || c.CommentContent.Contains(query) || c.Title.Contains(query)|| c.Post.Title.Contains(query));
-                ViewBag.Query = query;
+                int tempID = Int32.Parse(pID);
+                comments = comments.Where(c => c.PostID == tempID).Include(c => c.Post);
+                ViewBag.postID = tempID;
             }
+            
+    
+
+            
+            
             return View(comments.ToList());
         }
         //How much users commented on his post

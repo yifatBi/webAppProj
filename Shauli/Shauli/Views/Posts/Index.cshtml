@@ -44,6 +44,7 @@
         <th>
             Comments Num
         </th>
+            Comments Edit
     </tr>
 
 @foreach (var item in Model) {
@@ -60,6 +61,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Comments.Count)
         </td>
+
+        <td>@Html.ActionLink("Show Comments", "index", "Comments", new { pID = item.ID}, null)</td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

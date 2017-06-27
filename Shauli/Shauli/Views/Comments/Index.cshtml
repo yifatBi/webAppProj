@@ -7,6 +7,7 @@
 <h2>Index</h2>
 <form>
     <input type="text" name="query" value="@ViewBag.Query" />
+    <input type="text" name="pID" value="@ViewBag.postID" />
     <input type="submit" value="Search" />
 </form>
 <p>
@@ -14,6 +15,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Post.ID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Post.Title)
         </th>
@@ -37,6 +41,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Post.ID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Post.Title)
         </td>
