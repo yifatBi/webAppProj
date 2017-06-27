@@ -29,7 +29,7 @@ namespace Shauli.Controllers
             {
                 int tempID = Int32.Parse(pID);
                 comments = comments.Where(c => c.PostID == tempID).Include(c => c.Post);
-                ViewBag.postID = tempID;
+                ViewBag.PostID = tempID;
             }
             
     
