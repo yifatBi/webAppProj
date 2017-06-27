@@ -15,8 +15,8 @@ namespace Shauli.Controllers
     {
         private PostsDbContext db = new PostsDbContext();
 
-        // GET: PostsToShow
-        public ActionResult Index(string name,string text,string dateFilter)
+       // GET: PostsToShow
+        public ActionResult Index(string name, string text, string dateFilter)
         {
             DateTime startDate,endDate;
             //Fetch the comments
@@ -39,11 +39,12 @@ namespace Shauli.Controllers
             if (!string.IsNullOrEmpty(dateFilter) && DateTime.TryParse(dateFilter, out startDate))
             {
                 endDate = startDate;
-                endDate=endDate.AddDays(1);
-                posts = posts.Where(p => p.PostDate>=startDate && p.PostDate<endDate);
+                endDate = endDate.AddDays(1);
+                posts = posts.Where(p => p.PostDate >= startDate && p.PostDate < endDate);
                 ViewBag.DateFilter = dateFilter;
             }
-            return View(posts.OrderByDescending(p => p.PostDate).ToList());
+            ViewBag.Posts = posts.OrderByDescending(p => p.PostDate).ToList();
+            return View();
         }
 
         //Create new action result for comment.
