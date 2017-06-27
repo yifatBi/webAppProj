@@ -13,23 +13,14 @@
 <section id="search">
     <form>
         <p>
-            <!--DatePicker Jquery Script-->
-            <script>
-               $(function () {
-                   $("#datepicker").datepicker();
-                   $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy");
-                   $("#datepicker").datepicker("option", "showAnim", "slide");
-                  // $("#datepicker").val("@ViewBag.DateFilter");
-                  });
-            </script>
-            <label>
-                Search by date:<input type="text" name="dateFilter" id="datepicker" >
+          <label>
+                Search by date:<input type="text" name="dateFilter" id="datepicker" value="@ViewBag.DateFilter">
             </label>
             <label>
-                <input type="text" name="name" placeholder="Author name" >
+                <input type="text" name="name" placeholder="Author name" value="@ViewBag.NameFilter">
             </label>
             <label>
-                <input type="text" name="text" placeholder="Free words" >
+                <input type="text" name="text" placeholder="Free words" value="@ViewBag.TextFilter">
             </label>
             <label>
                 <input type="submit"  value="Search">
@@ -161,4 +152,10 @@
             })
         })
     })
+               $(function () {
+                   $("#datepicker").datepicker();
+                   $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy");
+                   $("#datepicker").datepicker("option", "showAnim", "slide");
+                   $("#datepicker").val("@ViewBag.DateFilter");
+                });
 </script>
