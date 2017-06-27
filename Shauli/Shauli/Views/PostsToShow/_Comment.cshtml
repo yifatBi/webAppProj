@@ -1,0 +1,11 @@
+@model Shauli.Models.Comment
+<article>
+    <header>
+        <h4>@Model.Title</h4>
+        <p>
+            <a href="@Model.AuthorURL">@Model.AuthorName</a> |
+            @Model.CommentDate
+        </p>
+    </header>
+    <p>@Model.CommentContent</p>
+</article>
