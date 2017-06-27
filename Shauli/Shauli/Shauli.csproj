@@ -261,6 +261,9 @@
     <Content Include="Content\10.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\landscape-nature-clouds-cloudy.jpg" />
+    <Content Include="Content\images\pexels-photo-139575.jpeg" />
+    <Content Include="Content\images\sea-bay-waterfront-beach-50594.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -87,11 +87,13 @@ body.shaliBody {
     margin-top: 90px;
     background: linear-gradient(lightgrey, white);
     box-shadow: 5px 3px #DDDDDD;
+    transition: background 5s;
 }
 
     #myCanvas.hover {
-        background: linear-gradient( grey,white);
+        background: grey;
     }
+
 
 .canvas-music {
     width: 50%;
@@ -99,57 +101,23 @@ body.shaliBody {
 }
 
 /*Intro*/
-#intro {
-    z-index: -1;
-    position: relative;
-    margin-top: 66px;
-    padding: 44px;
-    /*Gradient background*/
-    background: #B3DC10; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#B3DC10, #477712); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#B3DC10, #477712); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#B3DC10, #477712); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#B3DC10, #477712); /* Standard syntax */
-    /* Background-size not implemented yet */
-    -webkit-background-size: 100%;
-    -o-background-size: 100%;
-    -khtml-background-size: 100%;
-    /* Border-radius not implemented yet */
-    -moz-border-radius: 22px;
-    -webkit-border-radius: 22px;
+
+#myCarousel .item img {
+    width: 100% !important;
+    max-height: 300px !important;
+    border-radius: 20px;
 }
 
-	#intro h2, #intro p {
-		position: relative;
-		z-index: 9999;
-		width: 436px;
-	}
-	
-	#intro h2 {
-		padding: 0 0 22px 0;
-		font-weight: normal;
-		color: #fff;
-	}
-	
-	#intro p {
-		padding: 0;
-		color: #d9f499;
-	}
-	
-	#intro img {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 653px;
-		height: 100%;
-	
-		/* Border-radius not implemented yet */
-		-moz-border-radius: 22px;
-		-webkit-border-radius: 22px;
-	}
-.headline-music{
-    margin:auto;
-    width:50%;
+.right.carousel-control {
+    border-radius: 20px;
+}
+
+.left.carousel-control {
+    border-radius: 20px;
+}
+#myCarousel.carousel-indicators {
+z-index:-1 !important;
+
 }
 /*------------------------------
 =CONTENT AREA AND SIDEBAR LAYOUT
