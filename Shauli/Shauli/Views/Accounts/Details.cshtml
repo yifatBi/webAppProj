@@ -108,7 +108,6 @@
     }
 
     function codeAddress() {
-        var address1 = 'Israel,Tel Aviv,HaMasger 6';
         var address= '@Model.Country,@Model.City,@Model.Address';
 
         geocoder.geocode( { 'address': address}, function(results, status) {
