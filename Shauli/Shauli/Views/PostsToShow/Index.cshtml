@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Shauli.Models.Posts>
+@*@model IEnumerable<Shauli.Models.Posts>*@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -16,25 +16,23 @@
             <!--DatePicker Jquery Script-->
             <script>
                $(function () {
-                   $("#datepicker").datepicker().on("show", function () {
-                       $(this).val("@ViewBag.DateFilter");
-                   });
+                   $("#datepicker").datepicker();
                    $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy");
                    $("#datepicker").datepicker("option", "showAnim", "slide");
-                   $("#datepicker").val("@ViewBag.DateFilter");
+                  // $("#datepicker").val("@ViewBag.DateFilter");
                   });
             </script>
             <label>
-                Search by date:<input type="text" name="dateFilter" id="datepicker" value="@ViewBag.DateFilter">
+                Search by date:<input type="text" name="dateFilter" id="datepicker" >
             </label>
             <label>
-                <input type="text" name="name" placeholder="Author name" value="@ViewBag.NameFilter">
+                <input type="text" name="name" placeholder="Author name" >
             </label>
             <label>
-                <input type="text" name="text" placeholder="Free words" value="@ViewBag.TextFilter">
+                <input type="text" name="text" placeholder="Free words" >
             </label>
             <label>
-                <input type="submit" value="Search">
+                <input type="submit"  value="Search">
             </label>
         </p>
         <p>
@@ -45,11 +43,11 @@
 
     </form>
 </section>
-@if (Model.Count() == 0)
+@if (ViewBag.Posts!=null)
 {
     <label>No Data Found</label>
 }
-@foreach (var post in Model)
+@foreach (var post in ViewBag.Posts)
 {
     //set the paragrapshs to substrings
     var textLength1 = post.PostContent.IndexOf('.', post.PostContent.Length / 4) + 1;
@@ -60,10 +58,10 @@
     <section>
         <article class="blogPost">
             <header>
-                <h2>@Html.DisplayFor(modelItem => post.Title)</h2>
+                <h2>@post.Title</h2>
                 <p>
 
-                    by <a href="@post.AuthorURL">@Html.DisplayFor(modelItem => post.AuthorName)</a>
+                    by <a href="@post.AuthorURL">@post.AuthorName</a>
                     - <a href="#comments">@post.Comments.Count comments</a>
                     <a href="~/?dateFilter=@post.PostDate.ToShortDateString()&name=&text="> @post.PostDate</a>
                 </p>
@@ -87,21 +85,21 @@
         </article>
     </section>
 
-    <section id="comments">
+    <section id="comments" class="commentSection">
         <h3>Comments</h3>
-        @foreach (var comment in post.Comments)
-        {
-            <article>
-                <header>
-                    <h4>@comment.Title</h4>
-                    <p>
-                        <a href="@comment.AuthorURL">@comment.AuthorName</a> |
-                        @comment.CommentDate
-                    </p>
-                </header>
-                <p>@comment.CommentContent</p>
-            </article>
-        }
+            @foreach (var comment in post.Comments)
+            {
+                <article>
+                    <header>
+                        <h4>@comment.Title</h4>
+                        <p>
+                            <a href="@comment.AuthorURL">@comment.AuthorName</a> |
+                            @comment.CommentDate
+                        </p>
+                    </header>
+                    <p>@comment.CommentContent</p>
+                </article>
+            }
     </section>
 
     using (Html.BeginForm("CreateComment", "PostsToShow", FormMethod.Post))
@@ -109,7 +107,6 @@
         var comment = new Shauli.Models.Comment();
         comment.PostID = post.ID;
 
-        @Html.AntiForgeryToken();
         @Html.HiddenFor(modelItem => comment.PostID);
 
 
@@ -133,7 +130,7 @@
                     </div>
                 </div>
 
-                <p><input type="submit" value="Post comment" /></p>
+                <p><input type="button" class="submit-comment" value="Post comment" /></p>
             }
             else
             {
@@ -151,3 +148,17 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+    $(document).ready(function () {
+        $('.submit-comment').click(function () {
+            _self = $(this).parents("form").eq(0).prev();
+            $.post('@Url.Action("CreateComment","PostsToShow")', $(this).parents("form").eq(0).serialize(), function (data) {
+                //add the comment to the list
+                _self.append(data);
+                //clean the form
+                $('form').trigger('reset');
+            })
+        })
+    })
+</script>
