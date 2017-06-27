@@ -48,18 +48,20 @@ namespace Shauli.Controllers
 
         //Create new action result for comment.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateComment([Bind(Include = "PostID,Title,AuthorName,AuthorURL,CommentContent")] Comment comment)
+        public ActionResult CreateComment(Comment comment)
         {
+            
             comment.CommentDate = DateTime.Now;
             if (ModelState.IsValid)
             {
+                
                 comment.AuthorName = Session["Username"].ToString();
                 comment.AuthorURL = "/Accounts/Details/" + Session["UserID"].ToString();
                 db.Comments.Add(comment);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index");
+
+            return PartialView("_Comment", comment);
         }
 
         // GET: PostsToShow/Details/5
