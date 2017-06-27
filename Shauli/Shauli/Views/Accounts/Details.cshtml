@@ -86,12 +86,14 @@
         <dd>
             @Html.DisplayFor(model => model.IsAdmin)
         </dd>
+
+        <dd>@Html.ActionLink("Posts", "index", "PostsToShow", new { name = Session["Username"] }, null)</dd>
     </dl>
     @* Map which displays each user address *@
     <div id="map"></div>
 </div>
 
-    @* Script for the Map *@
+@* Script for the Map *@
 
 
 <script>
@@ -136,5 +138,5 @@
 
 
 <p>
-   @Html.ActionLink("Home", "Index", "PostsToShow")
+    @Html.ActionLink("Home", "Index", "PostsToShow")
 </p>
