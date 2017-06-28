@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Comments</h2>
 <form>
     <input type="text" name="query" value="@ViewBag.Query" />
     <input type="text" name="pID" value="@ViewBag.PostID" />
@@ -71,3 +71,35 @@
 }
 
 </table>
+
+
+<h2>Count the times an author reply to himself.</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Post title
+            </th>
+            <th>
+                Post Author
+            </th>
+            <th>
+               Author comments count
+            </th>
+        </tr>
+
+        @foreach (var stat in ViewBag.Stats)
+        {
+            <tr>
+                <td>
+                    @stat.Title
+                </td>
+                <td>
+                    @stat.Author
+                </td>
+                <td>
+                    @stat.Count
+                </td>
+            </tr>
+        }
+
+    </table>

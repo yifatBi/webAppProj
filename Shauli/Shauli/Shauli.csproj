@@ -254,6 +254,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fans.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JoinCommentPost.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Posts.cs" />
     <Compile Include="Models\Tweets.cs" />

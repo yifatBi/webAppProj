@@ -18,7 +18,9 @@
     text-shadow: 3px 3px #DDDDDD;
     font-size:34px;
 }
-
+#mainContainer {
+    width: 100%;
+}
 
 body.shaliBody {
     margin: 0 auto;

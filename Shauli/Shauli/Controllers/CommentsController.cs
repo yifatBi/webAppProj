@@ -31,22 +31,32 @@ namespace Shauli.Controllers
                 comments = comments.Where(c => c.PostID == tempID).Include(c => c.Post);
                 ViewBag.PostID = tempID;
             }
-            
-    
 
-            
-            
+            GetStatisticsCommentPerUser();
+
+
             return View(comments.ToList());
         }
         //How much users commented on his post
         public void GetStatisticsCommentPerUser()
         {
-
+            List<JoinCommentPost> joinList = new List<JoinCommentPost>();
             var list = from post in db.Posts
                        join c in db.Comments on post.AuthorName equals c.AuthorName
                        select new { Author = post.AuthorName, PostTitle = post.Title, CommentNum = c.ID };
-            var groupBy = list.GroupBy(r => new { r.Author, r.PostTitle }).ToList();
-            ViewBag.stats = groupBy;
+            var groupBy = list.GroupBy(r => new { r.Author, r.PostTitle });
+            var listTmp=groupBy.Select( grp => new {
+                PostTitle = grp.Key.PostTitle,
+                AuthorName = grp.Key.Author,
+                Count = grp.Count()
+            }).ToList();
+
+            foreach(var item in listTmp)
+            {
+                joinList.Add(new JoinCommentPost { Title = item.PostTitle, Author = item.AuthorName, Count = item.Count });
+            }
+
+            ViewBag.Stats = joinList;
         }
         // GET: Comments/Details/5
         public ActionResult Details(int? id)
